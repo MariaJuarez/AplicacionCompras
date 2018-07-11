@@ -32,16 +32,8 @@ public class Producto {
     private Double cantidadCompraProducto;
 
     @NotBlank
-    @Column(name = "Mes")
-    private String mesCompraProducto;
-
-    @NotBlank
     @Column(name = "FechaCompra")
     private String fechaCompletaCompraProducto;
-
-    @NotBlank
-    @Column(name = "FechaAgote")
-    private String fechaCompletaAgoteProducto;
 
     @NotBlank
     @Column(name = "LugarCompra")
@@ -50,14 +42,20 @@ public class Producto {
     public Producto() {
     }
 
-    public Producto(Integer id, String nombreProducto, Double precioProducto, Double cantidadCompraProducto, String mesCompraProducto, String fechaCompletaCompraProducto, String fechaCompletaAgoteProducto, String lugarCompraProduto) {
+    public Producto(Integer id,String nombreProducto, Double precioProducto, Double cantidadCompraProducto, String fechaCompletaCompraProducto, String lugarCompraProduto) {
         this.nombreProducto = nombreProducto;
         this.precioProducto = precioProducto;
         this.cantidadCompraProducto = cantidadCompraProducto;
-        this.mesCompraProducto = mesCompraProducto;
         this.fechaCompletaCompraProducto = fechaCompletaCompraProducto;
-        this.fechaCompletaAgoteProducto = fechaCompletaAgoteProducto;
         this.lugarCompraProduto = lugarCompraProduto;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNombreProducto() {
@@ -84,36 +82,12 @@ public class Producto {
         this.cantidadCompraProducto = cantidadCompraProducto;
     }
 
-    public String getMesCompraProducto() {
-        return mesCompraProducto;
-    }
-
-    public void setMesCompraProducto(String mesCompraProducto) {
-        this.mesCompraProducto = mesCompraProducto;
-    }
-
     public String getFechaCompletaCompraProducto() {
         return fechaCompletaCompraProducto;
     }
 
     public void setFechaCompletaCompraProducto(String fechaCompletaCompraProducto) {
         this.fechaCompletaCompraProducto = fechaCompletaCompraProducto;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getFechaCompletaAgoteProducto() {
-        return fechaCompletaAgoteProducto;
-    }
-
-    public void setFechaCompletaAgoteProducto(String fechaCompletaAgoteProducto) {
-        this.fechaCompletaAgoteProducto = fechaCompletaAgoteProducto;
     }
 
     public String getLugarCompraProduto() {
@@ -127,13 +101,10 @@ public class Producto {
     @Override
     public String toString() {
         return "Producto{" +
-                "id=" + id +
-                ", nombreProducto='" + nombreProducto + '\'' +
+                "nombreProducto='" + nombreProducto + '\'' +
                 ", precioProducto=" + precioProducto +
                 ", cantidadCompraProducto=" + cantidadCompraProducto +
-                ", mesCompraProducto='" + mesCompraProducto + '\'' +
                 ", fechaCompletaCompraProducto='" + fechaCompletaCompraProducto + '\'' +
-                ", fechaCompletaAgoteProducto='" + fechaCompletaAgoteProducto + '\'' +
                 ", lugarCompraProduto='" + lugarCompraProduto + '\'' +
                 '}';
     }
