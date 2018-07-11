@@ -19,6 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/productos")
 public class ProductoController {
@@ -47,12 +48,13 @@ public class ProductoController {
     @RequestMapping(value = "/eliminar", method = RequestMethod.DELETE)
     public ResponseEntity<Producto> deleteEmpleado(@Valid @RequestBody Producto productoEliminar) throws ProductoNotFoundException {
         LOGGER.info("METHOD: 'deleteEmpleado' -- VALUES: '" + productoEliminar.toString() + "'");
-        if (productosServiceImpl.eliminarEmpleado(productoEliminar.getId(), productoEliminar)) {
+        if (productosServiceImpl.eliminarProducto(productoEliminar.getId(), productoEliminar)) {
             return ResponseEntity.ok(productoEliminar);
         }
         throw new ProductoNotFoundException("No se encontro el producto a eliminar");
     }
 
+    @CrossOrigin
     @RequestMapping("/list")
     public List<Producto> listEmpleados() {
         return productosServiceImpl.list();

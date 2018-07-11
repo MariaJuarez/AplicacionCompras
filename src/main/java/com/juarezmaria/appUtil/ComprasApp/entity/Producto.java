@@ -21,33 +21,33 @@ public class Producto {
 
     @NotBlank
     @Column(name = "Nombre")
-    private String nombreProducto;
+    private String nombre;
 
     @NotNull
     @Column(name = "Precio")
-    private Double precioProducto;
+    private Double precio;
 
     @NotNull
     @Column(name = "Cantidad")
-    private Double cantidadCompraProducto;
+    private Double cantidad;
 
     @NotBlank
-    @Column(name = "FechaCompra")
-    private String fechaCompletaCompraProducto;
+    @Column(name = "Fecha")
+    private String fecha;
 
     @NotBlank
-    @Column(name = "LugarCompra")
-    private String lugarCompraProduto;
+    @Column(name = "Lugar")
+    private String lugar;
 
     public Producto() {
     }
 
-    public Producto(Integer id,String nombreProducto, Double precioProducto, Double cantidadCompraProducto, String fechaCompletaCompraProducto, String lugarCompraProduto) {
-        this.nombreProducto = nombreProducto;
-        this.precioProducto = precioProducto;
-        this.cantidadCompraProducto = cantidadCompraProducto;
-        this.fechaCompletaCompraProducto = fechaCompletaCompraProducto;
-        this.lugarCompraProduto = lugarCompraProduto;
+    public Producto(Integer id,String nombre, Double precio, Double cantidad, String fecha, String lugar) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.cantidad = cantidad;
+        this.fecha = fecha;
+        this.lugar = lugar;
     }
 
     public Integer getId() {
@@ -58,54 +58,54 @@ public class Producto {
         this.id = id;
     }
 
-    public String getNombreProducto() {
-        return nombreProducto;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombreProducto(String nombreProducto) {
-        this.nombreProducto = nombreProducto;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public Double getPrecioProducto() {
-        return precioProducto;
+    public Double getPrecio() {
+        return precio;
     }
 
-    public void setPrecioProducto(Double precioProducto) {
-        this.precioProducto = precioProducto;
+    public void setPrecioProducto(Double precio) {
+        this.precio = precio;
     }
 
-    public Double getCantidadCompraProducto() {
-        return cantidadCompraProducto;
+    public Double getCantidad() {
+        return cantidad;
     }
 
-    public void setCantidadCompraProducto(Double cantidadCompraProducto) {
-        this.cantidadCompraProducto = cantidadCompraProducto;
+    public void setCantidad(Double cantidad) {
+        this.cantidad = cantidad;
     }
 
-    public String getFechaCompletaCompraProducto() {
-        return fechaCompletaCompraProducto;
+    public String getFecha() {
+        return fecha;
     }
 
-    public void setFechaCompletaCompraProducto(String fechaCompletaCompraProducto) {
-        this.fechaCompletaCompraProducto = fechaCompletaCompraProducto;
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 
-    public String getLugarCompraProduto() {
-        return lugarCompraProduto;
+    public String getLugar() {
+        return lugar;
     }
 
-    public void setLugarCompraProduto(String lugarCompraProduto) {
-        this.lugarCompraProduto = lugarCompraProduto;
+    public void setLugar(String lugar) {
+        this.lugar = lugar;
     }
 
     @Override
     public String toString() {
         return "Producto{" +
-                "nombreProducto='" + nombreProducto + '\'' +
-                ", precioProducto=" + precioProducto +
-                ", cantidadCompraProducto=" + cantidadCompraProducto +
-                ", fechaCompletaCompraProducto='" + fechaCompletaCompraProducto + '\'' +
-                ", lugarCompraProduto='" + lugarCompraProduto + '\'' +
+                "nombre='" + nombre + '\'' +
+                ", precio=" + precio +
+                ", cantidad=" + cantidad +
+                ", fecha='" + fecha + '\'' +
+                ", lugar='" + lugar + '\'' +
                 '}';
     }
 }

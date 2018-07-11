@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class ProductosServiceImpl {
+public class ProductosServiceImpl{
 
     @Autowired
     private ProductosRepoServiceDao productosRepoServiceDao;
@@ -32,7 +32,7 @@ public class ProductosServiceImpl {
         return true;
     }
 
-    public boolean eliminarEmpleado(Integer productoId, Producto productoEliminar){
+    public boolean eliminarProducto(Integer productoId, Producto productoEliminar){
         if(productosRepoServiceDao.findOne(productoId)==null){
             return false;
         }

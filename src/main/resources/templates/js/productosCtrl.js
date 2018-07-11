@@ -66,28 +66,27 @@ app.controller('productosCtrl', ['$scope', '$http', 'servicios', function($scope
 	$scope.limpiar = function () {
 		$scope.producto = {};
 		$scope.buscar = {};
-		$scope.formularioAgregar.$setPristine();
-		$scope.formularioEditar.$setPristine();
+		$scope.agregarForm.$setPristine();
 	}
 
 	$scope.esCorrectoNombre = function (editarCrear){
 		if(editarCrear.localeCompare('Agregar') == 0){
-			return !$scope.formularioAgregar.nombre.$error.required;
+			return !$scope.agregarForm.nombre.$error.required;
 		}
 		return !$scope.formularioEditar.nombre.$error.required;
 	}
 
 	$scope.esIncorrectoNombre = function (editarCrear){
 		if(editarCrear.localeCompare('Agregar') == 0){
-			return !$scope.formularioAgregar.nombre.$pristine && $scope.formularioAgregar.nombre.$error.required;
+			return !$scope.agregarForm.nombre.$pristine && $scope.agregarForm.nombre.$error.required;
 		}
 		return !$scope.formularioEditar.nombre.$pristine && $scope.formularioEditar.nombre.$error.required;
 	}
 
 	$scope.esCorrectoPrecio = function (editarCrear){
 		if(editarCrear.localeCompare('Agregar') == 0){
-			return !$scope.formularioAgregar.precio.$error.required
-			&& !$scope.formularioAgregar.precio.$error.min && !$scope.formularioAgregar.precio.$error.max;
+			return !$scope.agregarForm.precio.$error.required
+			&& !$scope.agregarForm.precio.$error.min && !$scope.agregarForm.precio.$error.max;
 		}
 		return !$scope.formularioEditar.precio.$error.required
 		&& !$scope.formularioEditar.precio.$error.min && !$scope.formularioEditar.precio.$error.max;
@@ -95,8 +94,8 @@ app.controller('productosCtrl', ['$scope', '$http', 'servicios', function($scope
 
 	$scope.esIncorrectoPrecio = function (editarCrear){
 		if(editarCrear.localeCompare('Agregar') == 0){
-			return !$scope.formularioAgregar.precio.$pristine &&
-			($scope.formularioAgregar.precio.$error.required || $scope.formularioAgregar.precio.$error.min || $scope.formularioAgregar.precio.$error.max);
+			return !$scope.agregarForm.precio.$pristine &&
+			($scope.agregarForm.precio.$error.required || $scope.agregarForm.precio.$error.min || $scope.agregarForm.precio.$error.max);
 		}
 		return !$scope.formularioEditar.precio.$pristine &&
 		($scope.formularioEditar.precio.$error.required || $scope.formularioEditar.precio.$error.min || $scope.formularioEditar.precio.$error.max);
@@ -104,15 +103,15 @@ app.controller('productosCtrl', ['$scope', '$http', 'servicios', function($scope
 
 	$scope.esIncorrectoPrecioSpan = function (editarCrear){
 		if(editarCrear.localeCompare('Agregar') == 0){
-			return !$scope.formularioAgregar.precio.$pristine && $scope.formularioAgregar.precio.$error.required;
+			return !$scope.agregarForm.precio.$pristine && $scope.agregarForm.precio.$error.required;
 		}
 		return !$scope.formularioEditar.precio.$pristine && $scope.formularioEditar.precio.$error.required;
 	}
 
 	$scope.esCorrectoCantidad = function (editarCrear){
 		if(editarCrear.localeCompare('Agregar') == 0){
-			return !$scope.formularioAgregar.cantidad.$error.required
-			&& !$scope.formularioAgregar.cantidad.$error.min && !$scope.formularioAgregar.cantidad.$error.max;
+			return !$scope.agregarForm.cantidad.$error.required
+			&& !$scope.agregarForm.cantidad.$error.min && !$scope.agregarForm.cantidad.$error.max;
 		}
 		return !$scope.formularioEditar.cantidad.$error.required
 		&& !$scope.formularioEditar.cantidad.$error.min && !$scope.formularioEditar.cantidad.$error.max;
@@ -120,8 +119,8 @@ app.controller('productosCtrl', ['$scope', '$http', 'servicios', function($scope
 
 	$scope.esIncorrectoCantidad = function (editarCrear){
 		if(editarCrear.localeCompare('Agregar') == 0){
-			return !$scope.formularioAgregar.cantidad.$pristine &&
-			($scope.formularioAgregar.cantidad.$error.required || $scope.formularioAgregar.cantidad.$error.min || $scope.formularioAgregar.cantidad.$error.max);
+			return !$scope.agregarForm.cantidad.$pristine &&
+			($scope.agregarForm.cantidad.$error.required || $scope.agregarForm.cantidad.$error.min || $scope.agregarForm.cantidad.$error.max);
 		}
 		return !$scope.formularioEditar.cantidad.$pristine &&
 		($scope.formularioEditar.cantidad.$error.required || $scope.formularioEditar.cantidad.$error.min || $scope.formularioEditar.cantidad.$error.max);
@@ -129,7 +128,7 @@ app.controller('productosCtrl', ['$scope', '$http', 'servicios', function($scope
 
 	$scope.esIncorrectoCantidadSpan = function (editarCrear){
 		if(editarCrear.localeCompare('Agregar') == 0){
-			return !$scope.formularioAgregar.cantidad.$pristine && $scope.formularioAgregar.cantidad.$error.required;
+			return !$scope.agregarForm.cantidad.$pristine && $scope.agregarForm.cantidad.$error.required;
 		}
 		return !$scope.formularioEditar.cantidad.$pristine && $scope.formularioEditar.cantidad.$error.required;
 	}
@@ -137,46 +136,24 @@ app.controller('productosCtrl', ['$scope', '$http', 'servicios', function($scope
     /**
 	 * Fecha
      */
-    $scope.esCorrectoFechaCompra = function (editarCrear){
+    $scope.esCorrectoFecha = function (editarCrear){
         if(editarCrear.localeCompare('Agregar') == 0){
-            return !$scope.formularioAgregar.cantidad.$error.required
-                && !$scope.formularioAgregar.cantidad.$error.min && !$scope.formularioAgregar.cantidad.$error.max;
+            return !$scope.agregarForm.cantidad.$error.required
+                && !$scope.agregarForm.cantidad.$error.min && !$scope.agregarForm.cantidad.$error.max;
         }
         return !$scope.formularioEditar.cantidad.$error.required
             && !$scope.formularioEditar.cantidad.$error.min && !$scope.formularioEditar.cantidad.$error.max;
     }
 
-    $scope.esIncorrectoFechaCompra = function (editarCrear){
+    $scope.esIncorrectoFecha = function (editarCrear){
         if(editarCrear.localeCompare('Agregar') == 0){
-            return !$scope.formularioAgregar.cantidad.$pristine &&
-                ($scope.formularioAgregar.cantidad.$error.required || $scope.formularioAgregar.cantidad.$error.min || $scope.formularioAgregar.cantidad.$error.max);
+            return !$scope.agregarForm.cantidad.$pristine &&
+                ($scope.agregarForm.cantidad.$error.required || $scope.agregarForm.cantidad.$error.min || $scope.agregarForm.cantidad.$error.max);
         }
         return !$scope.formularioEditar.cantidad.$pristine &&
             ($scope.formularioEditar.cantidad.$error.required || $scope.formularioEditar.cantidad.$error.min || $scope.formularioEditar.cantidad.$error.max);
     }
 
-    $scope.ingresarFechaCompra = function(){
-        $('#input-group.date.compra').datepicker({
-            format : "dd-mm-yyyy",
-            weekStart : 0,
-            endDate : "",
-            clearBtn : false,
-            todayHighlight: true,
-            language : "es",
-            autoclose: true
-        });
-    }
-    $scope.ingresarFechaAgote = function(){
-        $('#datepicker').datepicker({
-            format : "dd-mm-yyyy",
-            weekStart : 0,
-            endDate : "",
-            clearBtn : false,
-            todayHighlight: true,
-            language : "es",
-            autoclose: true
-        });
-    }
 }
 
 ]);

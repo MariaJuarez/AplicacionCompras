@@ -31,10 +31,10 @@
     <!-- Script Date-Picker -->
     <script>
         $(document).ready(function () {
-            var date_input = $('input[name="fechaCompra"]'); //our date input has the name "fechaCompra"
+            var date_input = $('input[name="fecha"]'); //our date input has the name "fecha"
             date_input.datepicker({
                 language: "es",
-                format: 'mm/dd/yyyy',
+                format: 'dd/mm/yyyy',
                 todayHighlight: true,
                 autoclose: true,
             })
@@ -92,73 +92,82 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <form method="post">
+                                <form method="post" name="agregarForm">
                                     <div class="form-group ">
                                         <label class="control-label requiredField" for="nombre">
                                             Nombre
                                             <span class="asteriskField">*</span>
                                         </label>
-                                        <input class="form-control" id="nombre" name="nombre" type="text"/>
+                                        <input class="form-control" id="nombre" name="nombre" ng-model="producto.nombre" type="text"/>
+
                                     </div>
                                     <div class="form-group ">
                                         <label class="control-label requiredField" for="precio">
                                             Precio
                                             <span class="asteriskField">*</span>
                                         </label>
-                                        <input class="form-control" id="precio" name="precio" type="text"/>
+                                        <input class="form-control" id="precio" name="precio" ng-model="producto.precio" type="number"/>
                                     </div>
                                     <div class="form-group ">
                                         <label class="control-label requiredField" for="cantidadCompra">
                                             Cantidad
                                             <span class="asteriskField">*</span>
                                         </label>
-                                        <input class="form-control" id="cantidadCompra" name="cantidadCompra"
-                                               placeholder="Ingrese Cantidad" type="text"/>
+                                        <input class="form-control" id="cantidadCompra" name="cantidad" ng-model="producto.cantidad"
+                                               placeholder="Ingrese Cantidad" type="number"/>
                                     </div>
                                     <div class="form-group ">
-                                        <label class="control-label " for="fechaCompra">
+                                        <label class="control-label " for="fecha">
                                             Fecha Compra
                                         </label>
-                                        <input class="form-control" id="fechaCompra" name="fechaCompra"
-                                               placeholder="MM/DD/YYYY" type="text"/>
-                                        <span class="help-block" id="hint_fechaCompra">Ingrese fecha</span>
+                                        <input class="form-control" id="fecha" name="fecha" ng-model="producto.fecha"
+                                               placeholder="DD/MM/YYYY" type="text"/>
                                     </div>
-
                                     <div class="form-group ">
-                                        <label class="control-label requiredField" for="lugarCompra">
-                                            Lugar de compra
+                                        <label class="control-label requiredField" for="lugar">
+                                            Lugar
                                             <span class="asteriskField">*</span>
                                         </label>
-                                        <select class="select form-control" id="lugarCompra" name="lugarCompra">
-                                            <option value="coto">
-                                                Coto
-                                            </option>
-                                            <option value="dia">
-                                                Dia
-                                            </option>
-                                            <option value="jumbo">
-                                                Jumbo
-                                            </option>
-                                            <option value="vital">
-                                                Vital
-                                            </option>
-                                            <option value="carrefour">
-                                                Carrefour
-                                            </option>
-                                            <option value="otro">
-                                                Otro
-                                            </option>
-                                        </select>
+                                        <input class="form-control" id="lugar" name="lugar" ng-model="producto.lugar" type="text"/>
+
                                     </div>
-                                </form>
-                                <!-- Pie del modal-->
+
+
+
+                                    <!--  <div class="form-group ">
+                                          <label class="control-label requiredField" for="lugar">
+                                              Lugar de compra
+                                              <span class="asteriskField">*</span>
+                                          </label>
+                                          <select class="select form-control" id="lugar" name="lugar" type="text">
+                                              <option value="coto">
+                                                  Coto
+                                              </option>
+                                              <option value="dia">
+                                                  Dia
+                                              </option>
+                                              <option value="jumbo">
+                                                  Jumbo
+                                              </option>
+                                              <option value="vital">
+                                                  Vital
+                                              </option>
+                                              <option value="carrefour">
+                                                  Carrefour
+                                              </option>
+                                              <option value="otro">
+                                                  Otro
+                                              </option>
+                                          </select>
+                                      </div>-->
+                                  </form>
+                                  <!-- Pie del modal-->
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal"
                                             ng-click="limpiar()">Cancelar
                                     </button>
                                     <button type="button" class="btn btn-primary" ng-click="agregarProducto()"
-                                            data-dismiss="modal"
-                                            ng-disabled="formularioAgregar.$invalid">Agregar
+                                            data-dismiss="modal">Agregar
                                     </button>
                                 </div>
                             </div>
@@ -177,31 +186,29 @@
     <div class="table-responsive">
         <table class="table table-hover">
             <tr>
+                <th><a class="puntero" ng-click="columna = 'id'; reverse = !reverse;">ID</a></th>
                 <th><a class="puntero" ng-click="columna = 'nombre'; reverse = !reverse;">Nombre</a></th>
                 <th><a class="puntero" ng-click="columna = 'precio'; reverse = !reverse;">Precio</a></th>
                 <th><a class="puntero" ng-click="columna = 'cantidad'; reverse = !reverse;">Cantidad</a></th>
-                <th><a class="puntero" ng-click="columna = 'fechaCompra'; reverse = !reverse;">Compra</a></th>
-                <th><a class="puntero" ng-click="columna = 'fechaAgote'; reverse = !reverse;">Agote</a></th>
-                <th><a class="puntero" ng-click="columna = 'lugarCompra'; reverse = !reverse;">Lugar de Compra</a></th>
+                <th><a class="puntero" ng-click="columna = 'fecha'; reverse = !reverse;">Compra</a></th>
+                <th><a class="puntero" ng-click="columna = 'lugar'; reverse = !reverse;">Lugar de Compra</a></th>
+                <th>Accion</th>
             </tr>
-            <td>Leche</td>
-            <td>20</td>
-            <td>1</td>
-            <td>02/07/2018</td>
-            <td>07/07/2018</td>
-            <td>Jumbo</td>
-            <td>
-                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editarModal"
-                        ng-click="modalEditar(pro)">
-                    <span class="glyphicon glyphicon-edit"></span>Editar
-                </button>
 
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#eliminarModal"
-                        ng-click="idEliminar(pro)">
-                    <span class="glyphicon glyphicon-remove"></span>Eliminar
-                </button>
+            <tr ng-repeat = "pro in productos | filter : {id : buscarId} | orderBy : columna : reverse">
+                <td>{{pro.id}}</td>
+                <td>{{pro.nombre}}</td>
+                <td>{{pro.precio | currency}}</td>
+                <td>{{pro.cantidad}}</td>
+                <td>{{pro.fecha}}</td>
+                <td>{{pro.lugar}}</td>
+                <td><button class="btn btn-warning" data-toggle="modal" data-target="#editarModal" ng-click="modalEditar(pro)">
+                    <i class="fa fa-edit"></i>Editar</button>
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#eliminarModal" ng-click="idEliminar(pro)">
+                        <i class="fa fa-trash"></i>Eliminar</button></td>
+            </tr>
 
-            </td>
+
 
             <!--	<tr ng-repeat = "pro in empleados | filter : {id : buscarId} | orderBy : columna : reverse">
                     <td>{{pro.nombre}}</td>
@@ -214,8 +221,6 @@
                     <i class="fa fa-edit"></i>Editar</button>
                     <button class="btn btn-danger" data-toggle="modal" data-target="#eliminarModal" ng-click="idEliminar(pro)">
                     <i class="fa fa-trash"></i>Eliminar</button></td>-->
-
-            </tr>
         </table>
     </div>
 
