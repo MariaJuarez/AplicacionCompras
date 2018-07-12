@@ -12,8 +12,9 @@
 	cursor: pointer;
 }
 header img {
-    height: 80px;
-    margin-left: 40px;
+    height: 120px;
+    margin-left: 80px;
+    background-color: #005cbf;
 }
 body {
     height: 125vh;
@@ -24,9 +25,9 @@ body {
     padding: 30px;
 }
 
-main {
-    color: #6f42c1;
-    font-family: "Cooper Black";
+nav {
+    background-color: #005cbf;
+
 }
 
 header {
@@ -35,7 +36,7 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    height: 80px;
+    height: 50px;
     display: flex;
     align-items: center;
     box-shadow: 0 0 25px 0 black;
@@ -50,8 +51,18 @@ header li {
 }
 
 header li a {
-    color: black;
+    color: white;
     text-decoration: none;
 }
 
 .asteriskField{color: red;}
+
+.modal-header, h4, .close {
+    background-color: #2d6ca2;
+    color:white !important;
+    text-align: center;
+    font-size: 30px;
+}
+.modal-footer {
+    background-color: #f9f9f9;
+}

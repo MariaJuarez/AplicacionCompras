@@ -3,7 +3,7 @@ var app = angular.module('directivas',[]);
 app.directive('modalAgregar', function(){
     return{
         restrict: 'E',
-        templateUrl: 'pages/agregarsdasdOldModal.html'
+        templateUrl: 'pages/modalAgregar.html'
     };
 });
 
