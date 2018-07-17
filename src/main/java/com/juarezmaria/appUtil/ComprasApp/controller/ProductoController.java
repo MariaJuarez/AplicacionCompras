@@ -31,15 +31,15 @@ public class ProductoController {
 
     @RequestMapping(value = "/agregar", method = RequestMethod.POST)
     public void agregarProducto(@Valid @RequestBody Producto producto) {
-        LOGGER.info("METHOD: 'agregarProducto' -- VALUES: '" + producto.toString() + "'");
+        LOGGER.info("METHOD: 'agregarProducto' -- VALUES: '".concat(producto.toString()).concat("'"));
         productosServiceImpl.agregarProducto(producto);
     }
 
     @RequestMapping(value = "/editar", method = RequestMethod.PUT)
     public ResponseEntity<Producto> editEmpleado(@Valid @RequestBody Producto productoEditado) throws ProductoNotFoundException {
-        LOGGER.info("METHOD: 'editEmpleado' -- VALUES_INIT: '" + productoEditado.toString() + "'");
+        LOGGER.info("METHOD: 'editEmpleado' -- VALUES_INIT: '".concat(productoEditado.toString()).concat("'"));
         if (productosServiceImpl.editarProducto(productoEditado.getId(), productoEditado)) {
-            LOGGER.info("METHOD: 'editEmpleado' -- VALUES_FINALLY: '" + productoEditado.toString() + "'");
+            LOGGER.info("METHOD: 'editEmpleado' -- VALUES_FINALLY: '".concat(productoEditado.toString()).concat("'"));
             return ResponseEntity.ok(productoEditado);
         }
         throw new ProductoNotFoundException("No se encontro el producto a editar");
@@ -47,8 +47,8 @@ public class ProductoController {
 
     @RequestMapping(value = "/eliminar", method = RequestMethod.DELETE)
     public ResponseEntity<Producto> deleteEmpleado(@Valid @RequestBody Producto productoEliminar) throws ProductoNotFoundException {
-        LOGGER.info("METHOD: 'deleteEmpleado' -- VALUES: '" + productoEliminar.toString() + "'");
-        if (productosServiceImpl.eliminarProducto(productoEliminar.getId(), productoEliminar)) {
+        LOGGER.info("METHOD: 'deleteEmpleado' -- VALUES: '".concat(productoEliminar.toString()).concat("'"));
+        if (productosServiceImpl.eliminarProducto(productoEliminar.getId())) {
             return ResponseEntity.ok(productoEliminar);
         }
         throw new ProductoNotFoundException("No se encontro el producto a eliminar");
